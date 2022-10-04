@@ -1,3 +1,5 @@
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -7,10 +9,12 @@ public class Driver {
 	public static void main(String[] args) throws FileNotFoundException {
 		Polynomial p = new Polynomial(); 
 		System.out.println(p.evaluate(3)); 
-	    double [] c1 = {6,0,0,5}; 
-		Polynomial p1 = new Polynomial(c1); 
-		double [] c2 = {0,-2,0,0,-9}; 
-		Polynomial p2 = new Polynomial(c2); 
+	    double [] c1 = {6,5}; 
+	    int[] c2 = {0,3};
+		Polynomial p1 = new Polynomial(c1, c2); 
+		double [] c3 = {-2,-9}; 
+		int[] c4 = {1,4};
+		Polynomial p2 = new Polynomial(c3,c4); 
 		Polynomial s = p2.add(p1);
 		System.out.println("s = 6+5x3 + -2x1-9x4");
 		System.out.println("s(1) = " + s.evaluate(1));

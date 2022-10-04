@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -13,27 +14,15 @@ public class Polynomial {
         exponents = new int[]{0};
     }
     
-    public Polynomial(double[] arg)
-    {
-        int length = 0;
-        int index = 0;
-        for(int i = 0; i < arg.length; i++)
-        {
-        	if(arg[i] != 0)
-        		length++;
-        }
-        coefficients = new double[length];
-        exponents = new int[length];
-        for(int i = 0; i < arg.length; i++)
-        {
-        	if(arg[i] != 0) {
-        		coefficients[index] = arg[i];
-                exponents[index] = i;
-                index++;
-        	}
-        }
-    }
-    
+    public Polynomial(double[] co, int[] exp){
+		coefficients = new double[co.length];
+		exponents = new int[exp.length];
+		for(int i = 0; i < co.length; i++){
+			coefficients[i] = co[i];
+			exponents[i] = exp[i];
+		}
+	}
+
     public Polynomial(File file) throws FileNotFoundException  {
     	Scanner input = new Scanner(file);
     	String poly = input.next();
@@ -82,7 +71,21 @@ public class Polynomial {
     		sum = sumAdd(poly, i);
     		newPolyCo[i] = sum;
     	}
-    	Polynomial newPoly = new Polynomial(newPolyCo);
+        for(int i = 0; i < newPolyCo.length; i++)
+        {
+        	if(newPolyCo[i] != 0)
+        		length++;
+        }
+    	double[] co = new double[length];
+		int[] exp = new int[length];
+		for(int i = 0; i < newPolyCo.length; i++)
+        {
+        	if(newPolyCo[i] != 0) {
+        		co[i] = newPolyCo[i];
+                exp[i] = i;
+        	}
+        }
+    	Polynomial newPoly = new Polynomial(co, exp);
     	return newPoly;
     }
     
@@ -138,7 +141,21 @@ public class Polynomial {
     		sum = sumMult(poly, i);
     		newPolyCo[i] = sum;
     	}
-    	Polynomial newPoly = new Polynomial(newPolyCo);
+    	for(int i = 0; i < newPolyCo.length; i++)
+        {
+        	if(newPolyCo[i] != 0)
+        		length++;
+        }
+    	double[] co = new double[length];
+		int[] exp = new int[length];
+		for(int i = 0; i < newPolyCo.length; i++)
+        {
+        	if(newPolyCo[i] != 0) {
+        		co[i] = newPolyCo[i];
+                exp[i] = i;
+        	}
+        }
+    	Polynomial newPoly = new Polynomial(co, exp);
     	return newPoly;
     }
     
@@ -181,3 +198,41 @@ public class Polynomial {
     		}
     	}
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
