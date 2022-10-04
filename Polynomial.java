@@ -64,13 +64,14 @@ public class Polynomial {
     }
 
     public Polynomial add(Polynomial poly){
-    	int length = highestExpAdd(poly, exponents) + 1;
+    	int length = highestExpAdd(poly, exponents) + 1, index = 0;
     	double sum = 0;
     	double[] newPolyCo = new double[length];
     	for(int i = 0; i < newPolyCo.length; i++) {
     		sum = sumAdd(poly, i);
     		newPolyCo[i] = sum;
     	}
+    	length = 0;
         for(int i = 0; i < newPolyCo.length; i++)
         {
         	if(newPolyCo[i] != 0)
@@ -81,8 +82,9 @@ public class Polynomial {
 		for(int i = 0; i < newPolyCo.length; i++)
         {
         	if(newPolyCo[i] != 0) {
-        		co[i] = newPolyCo[i];
-                exp[i] = i;
+        		co[index] = newPolyCo[i];
+                exp[index] = i;
+                index++;
         	}
         }
     	Polynomial newPoly = new Polynomial(co, exp);
@@ -134,13 +136,14 @@ public class Polynomial {
     }
     
     public Polynomial multiply(Polynomial poly) {
-    	int length = highestExpMul(poly, exponents) + 1;
+    	int length = highestExpMul(poly, exponents) + 1, index = 0;
     	double sum = 0;
     	double[] newPolyCo = new double[length];
     	for(int i = 0; i < newPolyCo.length; i++) {
     		sum = sumMult(poly, i);
     		newPolyCo[i] = sum;
     	}
+    	length = 0;
     	for(int i = 0; i < newPolyCo.length; i++)
         {
         	if(newPolyCo[i] != 0)
@@ -151,8 +154,9 @@ public class Polynomial {
 		for(int i = 0; i < newPolyCo.length; i++)
         {
         	if(newPolyCo[i] != 0) {
-        		co[i] = newPolyCo[i];
-                exp[i] = i;
+        		co[index] = newPolyCo[i];
+                exp[index] = i;
+                index++;
         	}
         }
     	Polynomial newPoly = new Polynomial(co, exp);
